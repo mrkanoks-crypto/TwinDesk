@@ -4,14 +4,14 @@
   if (typeof module === 'object' && module.exports) {
     module.exports = factory({
       en: require('./lang/en.js'), 'zh-CN': require('./lang/zh-CN.js'),
-      ru: require('./lang/ru.js'), tr: require('./lang/tr.js'),
+      ru: require('./lang/ru.js'), tr: require('./lang/tr.js'), th: require('./lang/th.js'),
     });
   } else {
     root.TwinDeskI18n = factory(root.TwinDeskLanguages || {});
   }
 })(typeof globalThis !== 'undefined' ? globalThis : this, function (bundled) {
   'use strict';
-  const LANGUAGES = ['en', 'zh-CN', 'ru', 'tr'];
+  const LANGUAGES = ['en', 'zh-CN', 'ru', 'tr', 'th'];
   const own = (obj, key) => obj && Object.prototype.hasOwnProperty.call(obj, key);
   const savedLanguage = (value) => LANGUAGES.includes(value) ? value : '';
 
@@ -21,6 +21,7 @@
     if (/^(zh|zh-cn|zh-sg|zh-hans(?:-[a-z]+)?)$/.test(system)) return 'zh-CN';
     if (/^ru(-|$)/.test(system)) return 'ru';
     if (/^tr(-|$)/.test(system)) return 'tr';
+    if (/^th(-|$)/.test(system)) return 'th';
     return 'en';
   }
 
