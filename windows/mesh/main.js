@@ -989,6 +989,8 @@ function createMainWindow() {
       contextIsolation: true,
       nodeIntegration: false,
       sandbox: true,
+      // Keep the control renderer active while the Windows desktop is shared.
+      backgroundThrottling: false,
     },
   });
   mainWin.loadFile(path.join(__dirname, 'app.html'), { query: { language: i18n.locale } });
